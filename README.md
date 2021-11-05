@@ -1,6 +1,9 @@
 # tinymediamanager-docker
 
-A repository for creating a docker container including TinyMediaManager with GUI interface (with Chinese fonts).
+A repository for creating a docker container including TinyMediaManager with GUI interface (**with Chinese fonts**).
+
+The builds will catch up with upstream (romancin/tinymediamanager) with the same tag (version number). Visit [tags](https://hub.docker.com/r/dzhuang/tinymediamanager/tags)
+for more information.
 
 ![docker pulls](https://img.shields.io/docker/pulls/romancin/tinymediamanager.svg) ![docker stars](https://img.shields.io/docker/stars/romancin/tinymediamanager.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
 

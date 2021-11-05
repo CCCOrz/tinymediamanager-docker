@@ -1,0 +1,49 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  collect_tags:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - run: |
+        MY_LAST_PUSH=$(curl -L -s --max-time 10 'https://registry.hub.docker.com/v2/repositories/${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager/tags?page_size=1024'|jq -r '[."results" | sort_by(.tag_last_pushed)[]][-1].tag_last_pushed')
+        if [ $MY_LAST_PUSH == "null" ]; then MY_LAST_PUSH="2021"; fi
+        NEW_TAGS=$(curl -L -s --max-time 10 'https://registry.hub.docker.com/v2/repositories/romancin/tinymediamanager/tags?page_size=1024'| jq -r '[."results"[] | select(.tag_last_pushed |. >$s ) | select(.name|contains("dev")|not) | {name: .name} ] | tostring' --arg s $MY_LAST_PUSH)
+
+        if [ $NEW_TAGS == "[]" ]; then NEW_TAGS=$(echo '[{"name":"latest"},{"name":"latest-v4"}]'); fi
+
+        NEW_TAGS=$(echo $NEW_TAGS | sed 's/\"/\\"/g')
+        echo "new_tags=$(echo $NEW_TAGS)" >> $GITHUB_ENV
+    - id: set-matrix
+      name: set tag values
+      run: echo "::set-output name=matrix::{\"tag\":${{env.new_tags}}}"
+
+  build:
+    needs: collect_tags
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.collect_tags.outputs.matrix)}}
+    steps:
+      - name: Build ${{ matrix.tag.name }}
+        uses: actions/checkout@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          build-args: |
+            BASE_IMG=romancin/tinymediamanager:${{ matrix.tag.name }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager:${{ matrix.tag.name }}
