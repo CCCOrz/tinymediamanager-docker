@@ -1,24 +1,23 @@
 # tinymediamanager-docker
 
-A repository for creating a docker container including TinyMediaManager with GUI interface (**with Chinese fonts**).
+A repository for creating a docker container including TinyMediaManager with GUI interface (**with Chinese and Japanese fonts**).
+To use my build, please use `dzhuang/tinymediamanager`.
 
-The builds will catch up with upstream (romancin/tinymediamanager) with the same tag (version number). Visit [tags](https://hub.docker.com/r/dzhuang/tinymediamanager/tags)
+This repo tries to sync the [docker hub builds](https://hub.docker.com/r/dzhuang/tinymediamanager) with upstream (romancin/tinymediamanager) with the same tag (version number). Visit [dzhuang/tinymediamanager/tags](https://hub.docker.com/r/dzhuang/tinymediamanager/tags)
 for more information.
 
-![docker pulls](https://img.shields.io/docker/pulls/romancin/tinymediamanager.svg) ![docker stars](https://img.shields.io/docker/stars/romancin/tinymediamanager.svg) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
+![docker pulls](https://img.shields.io/docker/pulls/dzhuang/tinymediamanager.svg) ![docker stars](https://img.shields.io/docker/stars/dzhuang/tinymediamanager.svg)
 
 Latest versions:
 
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/romancin/tinymediamanager/v4) ![docker size](https://img.shields.io/docker/image-size/romancin/tinymediamanager/v4) 
-
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/romancin/tinymediamanager/v3) ![docker size](https://img.shields.io/docker/image-size/romancin/tinymediamanager/v3) 
-
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/dzhuang/tinymediamanager/v3) ![docker size](https://img.shields.io/docker/image-size/dzhuang/tinymediamanager/v3) 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/dzhuang/tinymediamanager/v4) ![docker size](https://img.shields.io/docker/image-size/dzhuang/tinymediamanager/v4)
 
 If you are migrating from v3 to v4, please make a backup before. I recommend you create a new host directory to map the new config, and copy the "/config/data" folder from v3 version to it.
 Take a look at the official upgrade documentation here:
 https://www.tinymediamanager.org/docs/upgrade-v4
 
-You can invite me a beer if you want ;) 
+Since credit goes to [romancin](https://github.com/romancin/tinymediamanager-docker) due to his great job, you can invite him a beer if you want ;) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X2CT2SWQCP74U)
 
 This is a completely funcional Docker image with TinyMediaManager.
 
@@ -43,7 +42,7 @@ docker run -d --name=tinymediamanager \
 -e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
 -p 5800:5800 \
 -p 5900:5900 \
-romancin/tinymediamanager:v4-latest
+dzhuang/tinymediamanager:v4-latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
@@ -301,11 +300,4 @@ Having troubles with the container or have questions?  Please
 
 ## Changelog
 
-v4.1.1 (16/03/2021): First version of TMM v4 (v4.1.1)
-
-v3.1.10 (31/10/2020): Updated TMM to 3.1.10
-
-v3.1.8 (09/09/2020): Updated to latest image from jlesage for Alpine 3.12, updated Corretto to current 1.8 version and TMM to 3.1.8
-
-v1.0.1 (22/09/2019): Updated to latest image from jlesage and added Jenkinsfile for CI
-
+See [Changelog from upstream](https://github.com/romancin/tinymediamanager-docker).
