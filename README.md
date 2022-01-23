@@ -39,10 +39,10 @@ Sample run command:
 docker run -d --name=tinymediamanager \
 -v /share/Container/tinymediamanager/config:/config \
 -v /share/Container/tinymediamanager/media:/media \
--e GROUP_ID=0 -e USER_ID=0 -e TZ=Europe/Madrid \
+-e GROUP_ID=1000 -e USER_ID=0 -e TZ=Asia/Hong_Kong \
 -p 5800:5800 \
 -p 5900:5900 \
-dzhuang/tinymediamanager:v4-latest
+dzhuang/tinymediamanager:latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
@@ -51,8 +51,8 @@ Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
 
 | TAG       | Description                                  |
 |-----------|----------------------------------------------|
-|`latest`| Latest available version of **TMM v3** |
-|`latest-v4`| Latest available version of **TMM v4** |
+|`latest`| Latest available version of **TMM v3**. **Recommended if you don't want to pay**. |
+|`latest-v4`| Latest available version of **TMM v4**. [Free for 50 movies, 10 TV series and about 50 API calls](https://www.tinymediamanager.org/blog/v4-future/). |
 |`vX.X.X` | Points directly to one of the TMM versions available, v3 or v4 |
 
 ### Environment Variables
