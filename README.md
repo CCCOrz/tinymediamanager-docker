@@ -1,6 +1,13 @@
 # tinymediamanager-docker
 
 A repository for creating a docker container including TinyMediaManager with GUI interface (**with Chinese and Japanese fonts**).
+
+## modification to the original repo
+- Add Chinese and Japanese fonts support out of the box (中文支持开箱即用)
+- Quick fix for bug that image change did not result in changes of version in running containers (since v3.1.18 and v4.3.8.1). Need to test if version change between v3 and v4 works and will submit PR to original repo. (修复image升级/变化后，容器实际运行的tmm版本未变化的bug，跨V3和V4的版本切换未测试，请谨慎使用)
+- Demo docker compose file that enable container auto upgrade (支持自动升级版本的docker compose示例文件).
+
+The build also fixes the version not updated issue of the 
 To use my build, please use `dzhuang/tinymediamanager`.
 
 This repo tries to sync the [docker hub builds](https://hub.docker.com/r/dzhuang/tinymediamanager) with upstream (romancin/tinymediamanager) with the same tag (version number). Visit [dzhuang/tinymediamanager/tags](https://hub.docker.com/r/dzhuang/tinymediamanager/tags)
