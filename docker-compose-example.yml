@@ -22,5 +22,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      WATCHTOWER_MONITOR_ONLY: 'true'
-    command: --interval 3600 tinymediamanager-v4
+      TZ: Asia/Shanghai
+    command: --interval 3600 tinymediamanager-v4 --cleanup
