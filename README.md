@@ -46,10 +46,10 @@ Sample run command:
 docker run -d --name=tinymediamanager \
 -v /share/Container/tinymediamanager/config:/config \
 -v /share/Container/tinymediamanager/media:/media \
--e GROUP_ID=1000 -e USER_ID=0 -e TZ=Asia/Hong_Kong \
+-e GROUP_ID=1000 -e USER_ID=0 -e TZ=Asia/Shanghai \
 -p 5800:5800 \
 -p 5900:5900 \
-dzhuang/tinymediamanager:latest
+durianice/tinymediamanager:latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
