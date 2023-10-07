@@ -1,7 +1,7 @@
 #
 # TinyMediaManager Dockerfile
 #
-ARG BASE_IMG=romancin/tinymediamanager:latest
+ARG BASE_IMG=coolyzp/tinymediamanager-arm:latest
 FROM $BASE_IMG
 
 # Install Chinese Fonts
