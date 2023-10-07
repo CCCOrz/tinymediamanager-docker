@@ -1,7 +1,7 @@
 ## 整合功能
 - 简体中文
 - ARM 平台
-- 
+
 ## Docker
 ```bash
 docker run -d --name=tinymediamanager \
