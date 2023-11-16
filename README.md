@@ -6,7 +6,7 @@
 ```bash
 docker run -d --name=tinymediamanager \
 -v /opt/tinymediamanager/config:/config \
--v /opt/media:/media \
+-v /YOUR_MEDIA_DIR:/media \
 -e GROUP_ID=1000 -e USER_ID=0 -e TZ=Asia/Shanghai \
 -p 5800:5800 \
 -p 5900:5900 \
