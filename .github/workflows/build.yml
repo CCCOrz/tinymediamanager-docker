@@ -36,6 +36,6 @@ jobs:
           context: .
           platforms: linux/amd64
           build-args: |
-            BASE_IMG=romancin/tinymediamanager:v4-latest
+            BASE_IMG=romancin/tinymediamanager:latest-v4
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager-amd:latest
