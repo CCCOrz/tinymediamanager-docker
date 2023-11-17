@@ -1,4 +1,4 @@
-name: CI
+name: Build docker images
 on:
   workflow_dispatch:
 
@@ -20,12 +20,22 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         
-      - name: Build and push
+      - name: Build and push ARM platform
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           build-args: |
             BASE_IMG=coolyzp/tinymediamanager-arm:latest
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager-arm:latest
+
+      - name: Build and push AMD platform
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64
+          build-args: |
+            BASE_IMG=romancin/tinymediamanager:v4-latest
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tinymediamanager-amd:latest
